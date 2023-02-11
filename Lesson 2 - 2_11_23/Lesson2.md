@@ -115,6 +115,21 @@ How to do it:
     - same logic as insertion
 - until the value is found
 
-To find the maximum value, just keep going right
+**To find the maximum value**, just keep going right
 
-To find the minimum value, just keep going left
+**To find the minimum value**, just keep going left
+
+**To find the lower bound**
+> The lower bound = the smallest element  >  `N`
+
+- Continue going right until a number > `N`
+- Then, keep going left until a number <= `N`
+
+### **Deletion**
+
+- locate the to-be-deleted element
+- depends on the location of the node:
+    - if it is a leaf node, delete directly
+    - if it has a left subtree, swap it with the largest element in its left subtree
+    - if it has a right subtree, swap it with the smallest element in its right subtree
+- Do the previous recursively until the to-be deleted node is a leaf and delete it directly
