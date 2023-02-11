@@ -1,5 +1,7 @@
 # **HKOI Lesson 2 - Data Structures**
 
+<br>
+
 ## **Common Types of operations**
 
 - insertion
@@ -30,17 +32,23 @@ In a min heap, each element is not less than its parent element
 
 <br>
 
-**Insertion** in a binary heap inserts a node at the next available slot, and then checks values with the parent node to see if a swap is neccessary
+### **Insertion** 
+
+A binary heap inserts a node at the next available slot, and then checks values with the parent node to see if a swap is neccessary
 
 > Time complexity is O(log N)
 
 <br>
 
-**Query** of the min/max element is always O(1) because it is the root node
+### **Query** 
+
+min/max element is always O(1) because it is the root node
 
 <br>
 
-**Deleting** the minimum node requires you to:
+### **Deleting** 
+
+Deleting the minimum node requires you to:
 
 1. Swap the minimum and the last node
 2. Delete the last node
@@ -71,3 +79,42 @@ declare `priority_queue<type, container type, compare parameter> `
 > `container type` = `vector<int>`
 
 > `compare parameter` = `std::less()` or nothing for max heap and `std::greater()` for min heap
+
+<br>
+<br>
+<br>
+
+## **Binary Search Tree**
+> - insertion O(log N)
+> - deletion O(log N)
+> - query O(log N)
+> - modification O(log N)
+
+### **Structure**
+
+- a directed binary tree (each node has 0 - 2 children)
+- each node stores an element
+- value of all nodes in the left subtree of node k < value of node k
+- value of all nodes in the right subtree of node k >= value of node k
+
+### **Insertion**
+
+- DFS from root
+- repeatedly travel down the tree 
+    - if the inserted value < the current value's node --> go left
+    - if the inserted value >= the current value's node --> go right
+
+### **Query**
+- Find if a number exists
+- Find range
+- Find min/max element
+
+How to do it:
+- DFS From root
+- repeatedly travel down the tree
+    - same logic as insertion
+- until the value is found
+
+To find the maximum value, just keep going right
+
+To find the minimum value, just keep going left
