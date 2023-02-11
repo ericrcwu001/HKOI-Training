@@ -1,4 +1,8 @@
+<center>
+
 # **HKOI Lesson 2 - Data Structures**
+
+</center>
 
 <br>
 
@@ -81,10 +85,13 @@ declare `priority_queue<type, container type, compare parameter> `
 > `compare parameter` = `std::less()` or nothing for max heap and `std::greater()` for min heap
 
 <br>
+
+### [**Problem 01019**](01019.cpp)
+
 <br>
 <br>
 
-## **Binary Search Tree**
+## **Binary Search Tree (BST)**
 > - insertion O(log N)
 > - deletion O(log N)
 > - query O(log N)
@@ -133,3 +140,102 @@ How to do it:
     - if it has a left subtree, swap it with the largest element in its left subtree
     - if it has a right subtree, swap it with the smallest element in its right subtree
 - Do the previous recursively until the to-be deleted node is a leaf and delete it directly
+
+### **Time Complexity**
+
+- Usually O(log N)
+- in the worst case, tree is a chain --> time complexity = O(N)
+    - if there are Q operations, O(QN Is very slow)
+
+*To avoid this, we can either -->*
+- shuffle the elements before insertion
+- use self balancing BST
+    - similar to the normal BST but it maintains it height close to O(log N)
+    - BUT very hard to code
+- use other search trees
+
+
+### **In C++**
+
+- set and mao are implemented by red-black tree
+- however raanking operations are not supported
+- what is supported:
+    - insert
+    - delete
+    - query
+    - extrema
+    - lower_bound
+    - exact value
+
+both map and set does not support duplicate keys - use multiset / multimap instead
+
+`std::lower_bound` != `set::lower_bound` / `map::lower_bound`
+
+<br>
+
+### [**Problem M0811**](M0811.cpp)
+
+<br>
+<br>
+
+## **Hash Table**
+
+### **What is it?**
+
+- an array that supports the following
+    - insertion O(1)
+    - CHECK SLIDES
+
+### **Hash function**
+
+- hash function is a function that takes an element and maps to an integer which the integer is used as the arr index
+- given a wide range of integers[0, 10^9], we want to fit them in an arr (CHECK SLIDES)
+- **based on modulo**
+- if two values are assigned to the same cell:
+    - use a vector array - open hashing
+    - store them both in cell 7
+
+#### **Handling Collision:**
+
+- closed hashing
+    - linear probing <-- vector array
+    - quadratic probing <-- (research more)
+    - double hashing <-- hash twice
+- rehashing
+
+#### **A Good Hash Function**
+
+- Goal: avoid collision - distrivute the elements evenly in the hash table
+    - bigger hash table
+    - prime number modulo
+- just use the stl hash table
+
+#### **Rolling Hash**
+
+How do we hash a string (suppose string is lowercase)
+- first map the character to a integer, e.g. a = 1, b = 2, etc.
+- choose a prime modulus M
+    - commonly use 10^9 + 7, but any large prime should work
+- the hash value of any string can be computed by 
+    - `S[0] + S[1] * 27 + S[2] + 27^2 + ... + S[N-1] * 27^[N-1] % M`
+- can adjust based off of input constraints
+
+#### **Time complexity**
+
+- suppose we have a good hash function, can distribute n elements evenly
+- O(1) for all insertion
+
+### **In C++**
+
+- `unordered_map` / `unordered_set` in c++ use hash table
+- supports insert, delete, query, in O(1)
+
+> `unordered_map`:
+> - stores element in a key-value combination
+> - keys are unordered
+> - no duplicate keys - use `unordered_multimap` instead
+
+> `unordered_set`:
+> - keys are hashed into indicies of hash table
+> - keys are unordered
+> - only unique keys are allowed - use `unordered_multset` instead
