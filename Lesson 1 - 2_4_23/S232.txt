@@ -1,0 +1,2 @@
+can literally be random partitions and you'll be lucky
+just figure out a quick checking mechanism

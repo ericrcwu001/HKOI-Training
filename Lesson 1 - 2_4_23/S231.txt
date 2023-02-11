@@ -1,0 +1,2 @@
+check if the x's smallest possible is larger than y's largest possible and vice versa
+pretty simple if you think about it

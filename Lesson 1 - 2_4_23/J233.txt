@@ -1,0 +1,43 @@
+/* Solution:
+  problem recap
+    - 2 x N grid
+    - at most 2.5N rotation operations
+    - sorted if a number is bigger than the one on its left or top
+
+  subtask 1:
+    obvs:
+    1. applying rotation on adjacent cells leads to swapping them
+    2. can treat the grid as an array with turns e.g. 4->2->1->3 = 4 2
+                                                                   3 1 (not efficient)
+    solution:
+      1. comp values for each column
+      2. then comp values for each row
+
+  subtask 2:
+    obvs:
+      - only need to sort one row since the second row is already sorted.
+      - applying rotation reverses it
+      - insertion sort --> inserting a value costs 2 operations --> still inefficient
+      - selection sort --> can just use one rotation since the preservation of order doesn't matter
+      
+    solution:
+      - selection sort
+    
+  
+  subtask 3:
+    obvs:
+      - if rotating a square    --> rotated by 90 deg
+      - if rotating a rectangle --> rotated by 180 deg
+        - rotating 2xk where k>2 --> reversing both rows and switching rows
+    solutions:
+      1. use 3 operations to put a value to it's correct place (4N > 2.5N)
+      2. two-stage algo
+        a. comp values in each column like subtask 1's solution
+        b. sort the rows using subtask 2's algo --> selection sort (best) still 3N (>2.5N)
+        HOW TO OPTMIZE:
+          - focus on the first stage
+          - don't go column by column, can combine switching different columns tgt
+          - let x by sorted columns, y be unsorted
+          - if x >= y, swap column by column bc it satisfys 0.5N
+          - if y > x, rotate entire grid first, then ^^^
+  */

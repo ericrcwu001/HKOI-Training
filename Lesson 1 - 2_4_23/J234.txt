@@ -1,0 +1,26 @@
+SOLUTION
+  subtask 1:
+    - answs are all integers
+    - no need for floats and all that bs
+    - bosed on the dir of the ith needle, we can know the (i+1)th needle
+    - calc needle heads by 1 by 1
+
+  subtask 3:
+    - after 4 seconds ALL needles will rotate back to original poistions
+    - only 4 possible answers (T = 0,1,2,3)
+
+  subtask 2:
+    - sum up all coords <-- vector addition
+    - O(NQ)
+
+  subtask 4:
+    - instead of calcing the roation degrees for each query, 
+        we can sum the rotation speeds (since independent)
+    - then multiply by time of each query
+    - S = S mod 3600 --> 3600 groups
+
+  subtask 5:
+    - use subtask 3, when S_i only had 4 values, 4 answers
+    - now S_i only has 3600 values, only 3600 answers
+    - precompute
+    - constant time needs to be small though
