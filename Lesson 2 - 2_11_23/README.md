@@ -239,3 +239,41 @@ How do we hash a string (suppose string is lowercase)
 > - keys are hashed into indicies of hash table
 > - keys are unordered
 > - only unique keys are allowed - use `unordered_multset` instead
+
+<br>
+<br>
+
+## **Disjoint-set union-find (DSU) *CHECK SLIDES***
+
+### [**Good Article about Disjoint Sets + Union and Find**](https://medium.com/@harshits337/disjoint-set-unions-by-rank-and-path-compression-3a7b3946f550)
+
+<br>
+
+### **What is it?**
+Tracks elements partitioned into a number of disjointed sets
+- one element belongs to exactly one group
+- one group may consist of any number of elements
+
+#### **Operations**
+
+- Union - merge two groups
+    - elements from two groups now belong to the same group
+- Find - find the group an element belongs to (ususally represents a group ID)
+    - check if two elements belong to the same group
+        - Let (1) be group 1, (2,3) be group 2, and (4,5,6) to be group 3
+        - Find(2) = 2
+        - Find(3) = 2
+        - Find(4) = 3
+
+### **Representation**
+
+> (1) Maintain an array `p[i]` which represents the group ID of element `i`
+
+> (2) Use tree structure to represent the groups, the group ID is the root of each tree, using an array `p[i]` to represent the parent of the element i
+
+### [**Problem N1511**](N1511.cpp)
+
+<br>
+<br>
+
+## **Heaps (CHECK SLIDES)**
